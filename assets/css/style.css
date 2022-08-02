@@ -1,0 +1,30 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: darkslateblue;
+}
+
+h1 {
+  color: palegoldenrod;
+  font-weight: bold;
+}
+
+p {
+  color: goldenrod;
+  text-align: center;
+  position: relative;
+}
+
+#searchBox {
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+#checkBoxes {
+  float: left;
+  display: block;
+  padding-left: 35px;
+  margin-bottom: 12px;
+}
