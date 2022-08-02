@@ -10,11 +10,13 @@
 
 
 
-
+// variable list
 var searchShow = document.querySelector("#searchBtn");
 var show = document.querySelector("#enterShow");
 
 searchShow.addEventListener("click", showSearch);
+
+// search function
 
 function showSearch() {
   var input = show.value
