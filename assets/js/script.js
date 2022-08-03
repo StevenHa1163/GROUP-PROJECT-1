@@ -18,6 +18,17 @@ var show = document.querySelector("#enterShow");
 searchShow.addEventListener("click", showSearch);
 // search function
 
+
+// testing get parameters function
+// function getParams() {
+//   var searchParamsArr = document.location.search.split('&')
+
+//   var query = searchParamsArr[0].split('=').pop();
+   
+//   searchApi(query)
+// }
+
+
 // full title rank
 const DISPLAY_LIMIT = 5;
 function showSearch() {
@@ -42,6 +53,60 @@ function showSearch() {
     }
   })
 };
+
+//trying to make the search function work and search certain parameters
+// function searchApi(query) {
+
+// var locQueryUrl = 'https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4'
+
+// locQueryUrl = locQueryUrl + '&q=' + query;
+
+// fetch(locQueryUrl)
+//   .then(function (response) {
+//     if (!response.ok) {
+//       throw response.json();
+//     }
+
+// return response.json();
+
+// })
+// .then(function (locRes) {
+
+//   resultTextEl.textcontent = locRes.search.query;
+
+//   if (!locRes.results.length) {
+//     console.log('No results found');
+//     resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+//   } else {
+//     resultContentEL.textContent = '';
+//     for (var i = 0; i < locRes.length.length; i++) {
+//       printResults(locRes.results[i]);
+//   }
+// }
+// })
+// .catch(function (error) {
+//   console.error(error);
+// });
+// }
+
+// function handleSearchFormSubmit(event) {
+//   event.preventDefault();
+
+//   var searchInputVal = document.querySelector('#search-input').value;
+
+//   if (!searchInputVal) {
+//     console.error('You need a search input value!');
+//     return;
+//   }
+
+//   searchApi(searchInputVal);
+// }
+
+// searchShow.addEventListener('click', handleSearchFormSubmit);
+
+// getParams();
+
+
 
 
 // function handleSearchBoxSubmit(event) {
@@ -72,9 +137,4 @@ function showSearch() {
 // };
 
 
-// function getParams() {
-//   var query = searchParamsArr = document.location.search.split('&')
-
-
-// }
 
