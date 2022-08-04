@@ -64,7 +64,7 @@ searchShow.addEventListener("click", showSearch);
 
 //TESTING
 
-const DISPLAY_LIMIT = 5;
+const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
