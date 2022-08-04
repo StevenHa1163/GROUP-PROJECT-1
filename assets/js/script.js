@@ -81,10 +81,10 @@ function showSearch() {
       const element = data.results[index];
       const itemContainer = document.createElement("div");
       const itemTitle = document.createElement("h2");
-      const itemRank = document.createElement("p");
+      const itemDesc = document.createElement("p");
       itemTitle.textContent = element.title;
-      // itemRank.textContent = element.rank;
-      itemContainer.append(itemTitle,itemRank);
+      itemDesc.textContent = element.description;
+      itemContainer.append(itemTitle,itemDesc);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
 
