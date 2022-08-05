@@ -11,15 +11,6 @@ searchShow.addEventListener("click", showSearch);
 // search function
 
 
-// testing get parameters function
-// function getParams() {
-//   var searchParamsArr = document.location.search.split('&')
-
-//   var query = searchParamsArr[0].split('=').pop();
-   
-//   searchApi(query)
-// }
-
 
 // full title rank
 // const DISPLAY_LIMIT = 5;
@@ -72,10 +63,13 @@ function showSearch() {
       const itemContainer = document.createElement("div");
       const itemTitle = document.createElement("h2");
       const itemDesc = document.createElement("p");
+      const itemID = document.createElement("p");
+      const itemId = element.imdb_id;
       itemTitle.textContent = element.name;
       itemDesc.textContent = element.type;
-      itemID.textContent = element.imdb_id;
-      itemContainer.append(itemTitle,itemDesc);
+      // itemID.textContent = element.imdb_id;
+      // itemID.textContent = element.imdb_id;
+      itemContainer.append(itemTitle,itemDesc,itemID);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
     }
@@ -87,110 +81,6 @@ function showTrailer(){
 
 }
 
-// //TESTING
-// function test(){
-// var anotherUrl = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
-// fetch(anotherUrl).then(function(res){
-//   return res.json();
-// }).then(function (data){
-//   console.log(data)
-// })
-// }
-
-
-//"tt0108709"
-//https://api.watchmode.com//v1/title/563961/details//?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&append_to_response=sources
-//'https://api.watchmode.com/v1/title/'
-
-//https://api.watchmode.com//v1/title/{tt0108709}/details//?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY
-
-//  var api_watch = 'https://api.watchmode.com/v1/regions/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value='
-//  url = url + input
-  
-// curl -i 'https://api.watchmode.com/v1/title/559969/details/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&append_to_response=sources'
-
-
-//trying to make the search function work and search certain parameters
-// function searchApi(query) {
-
-// var locQueryUrl = 'https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4'
-
-// locQueryUrl = locQueryUrl + '&q=' + query;
-
-// fetch(locQueryUrl)
-//   .then(function (response) {
-//     if (!response.ok) {
-//       throw response.json();
-//     }
-
-// return response.json();
-
-// })
-// .then(function (locRes) {
-
-//   resultTextEl.textcontent = locRes.search.query;
-
-//   if (!locRes.results.length) {
-//     console.log('No results found');
-//     resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-//   } else {
-//     resultContentEL.textContent = '';
-//     for (var i = 0; i < locRes.length.length; i++) {
-//       printResults(locRes.results[i]);
-//   }
-// }
-// })
-// .catch(function (error) {
-//   console.error(error);
-// });
-// }
-
-// function handleSearchFormSubmit(event) {
-//   event.preventDefault();
-
-//   var searchInputVal = document.querySelector('#search-input').value;
-
-//   if (!searchInputVal) {
-//     console.error('You need a search input value!');
-//     return;
-//   }
-
-//   searchApi(searchInputVal);
-// }
-
-// searchShow.addEventListener('click', handleSearchFormSubmit);
-
-// getParams();
-
-
-
-
-// function handleSearchBoxSubmit(event) {
-//   event.preventDefault();
-//   var searchInputVal = document.querySelector("#enterShow");
-//   var checkboxInputs = document.querySelector("#checkboxes")
-
-//   if (!searchInputVal) {
-//     console.error('You need a search input value!');
-//     return;
-
-//   var queryString = './search-results.html?q=' + searchInputVal + '&format=' + checkboxInputs
-//   console.log(queryString)
-//   }
-// }
-
-
-
-// function showSearch() {
-//   var input = show.value
-//   var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
-//   // var url = `http://api.openweathermap.org/go/1.0/direct?q=$e{input}&limit=1&appid=ac75e314d25573644ae4d9a903da5c8c`
-//   fetch(url).then(function (res) {
-//     return res.json();
-//   }).then(function (data) {
-//     console.log(data);
-//   })
-// };
 
 
 
