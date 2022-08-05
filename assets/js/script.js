@@ -61,10 +61,11 @@ function showSearch() {
     for (let index = 0; index < DISPLAY_LIMIT; index++) {
       const element = data.title_results[index];
       const itemContainer = document.createElement("div");
+      const itemId = element.imdb_id;
+      itemContainer.setAttribute("data-imdbid",itemId);
       const itemTitle = document.createElement("h2");
       const itemDesc = document.createElement("p");
       const itemID = document.createElement("p");
-      const itemId = element.imdb_id;
       itemTitle.textContent = element.name;
       itemDesc.textContent = element.type;
       // itemID.textContent = element.imdb_id;
@@ -72,15 +73,10 @@ function showSearch() {
       itemContainer.append(itemTitle,itemDesc,itemID);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
+      console.log(itemContainer.getAttribute("data-imdbid"))
+
     }
   })
 };
-
-
-function showTrailer(){
-
-}
-
-
 
 
