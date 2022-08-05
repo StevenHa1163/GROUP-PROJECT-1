@@ -58,6 +58,15 @@ function displayHistory() {
      var button = $("button")
      button.text(searches[i])
      $(".searches").append(button);
+
+
+  // var searchBox = document.querySelector(".input-group");
+  // searchBox.innerHTML = ('');
+  //    var btn = document.createElement("button")
+  //    btn.innerText = searches[i]
+  //    btn.addEventListener("click", displayHistory);
+  //    form-control.appendChild(btn);
+
     }  
 }
 displayHistory();
