@@ -44,9 +44,37 @@ searchShow.addEventListener("click", showSearch);
 
 //TESTING
 
+var searches = JSON.parse(localStorage.getItem("searches")) || [];
+console.log(searches);
+
+searchShow.addEventListener("click", showSearch);
+
+function displayHistory() {
+    $(".searches").empty();
+
+    for (let i = 0; i < searches.length; i++) {
+     console.log(i);
+    
+     var button = $("button")
+     button.text(searches[i])
+     $(".searches").append(button);
+    }  
+}
+displayHistory();
+
 const DISPLAY_LIMIT = 50;
 function showSearch() {
   var input = show.value
+
+  if (!searches.includes(input)){
+    searches.push(input)
+ //    resaving 
+    localStorage.setItem("searches", JSON.stringify(searches));
+ 
+    }
+   
+ displayHistory();
+
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
   // var url_watch = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
   // var url = `https://imdb-api.com/en/API/SearchSeries/k_72kh8az4`
@@ -102,3 +130,6 @@ function addTrailer(itemId, itemContainer) {
   })
 
 }
+
+
+
