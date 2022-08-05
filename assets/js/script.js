@@ -43,7 +43,7 @@ searchShow.addEventListener("click", showSearch);
 
 
 //TESTING
-
+// Retrieve history of searches if present otherwise setting up empty history
 var searches = JSON.parse(localStorage.getItem("searches")) || [];
 console.log(searches);
 
