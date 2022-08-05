@@ -44,7 +44,7 @@ searchShow.addEventListener("click", showSearch);
 
 //TESTING
 
-const DISPLAY_LIMIT = 3;
+const DISPLAY_LIMIT = 50;
 function showSearch() {
   var input = show.value
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
@@ -82,12 +82,23 @@ function showSearch() {
 
 function addTrailer(itemId, itemContainer) {
   var url = "https://api.watchmode.com/v1/title/"+itemId+"/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
-
-  console.log(itemId);
-  console.log(url)
+  // var url = "https://imdb-api.com/en/API/Trailer/k_72kh8az4/"+itemId+""
+  // console.log(itemId);
+  // console.log(url)
   fetch(url).then(function (res) {
     return res.json();
   }).then(function (data) {
     console.log(data)
+    const element = data.trailer;
+    console.log(element);
+    const a = document.createElement('a');
+    const link = document.createTextNode(element);
+    a.appendChild(link);
+    a.href = "element";
+    // a.title = "trailer";
+    // itemTrailer.textContent = element;
+    itemContainer.append(a);
+    console.log(itemContainer);
   })
+
 }
