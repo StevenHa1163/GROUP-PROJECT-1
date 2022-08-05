@@ -1,15 +1,3 @@
-// var requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-//   };
-
-//   fetch('https://imdb-api.com/en/API/Title/k_1234567/tt1832382', requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
-
-
-
 // variable list
 var searchShow = document.querySelector("#searchBtn");
 var show = document.querySelector("#enterShow");
@@ -17,6 +5,7 @@ var show = document.querySelector("#enterShow");
 // testing search input to search for title
 // var searchInputVal = document.querySelector("#search-input").value;
 // var queryString = ''
+
 // click event
 searchShow.addEventListener("click", showSearch);
 // search function
@@ -68,36 +57,57 @@ const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
-  // var url = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources'
-  var url = `https://imdb-api.com/en/API/SearchSeries/k_72kh8az4`
+  // var url_watch = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
+  // var url = `https://imdb-api.com/en/API/SearchSeries/k_72kh8az4`
+  var url = 'https://api.watchmode.com/v1/search/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value='
   // var url = `http://api.openweathermap.org/go/1.0/direct?q=$e{input}&limit=1&appid=ac75e314d25573644ae4d9a903da5c8c`
-  url = url + "/" + input
+  url = url + input
   fetch(url).then(function (res) {
     return res.json();
   }).then(function (data) {
     console.log(data)
     var resultsContainer = document.querySelector("#results");
     for (let index = 0; index < DISPLAY_LIMIT; index++) {
-      const element = data.results[index];
+      const element = data.title_results[index];
       const itemContainer = document.createElement("div");
       const itemTitle = document.createElement("h2");
       const itemDesc = document.createElement("p");
-      itemTitle.textContent = element.title;
-      itemDesc.textContent = element.description;
+      itemTitle.textContent = element.name;
+      itemDesc.textContent = element.type;
+      itemID.textContent = element.imdb_id;
       itemContainer.append(itemTitle,itemDesc);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
-
     }
   })
 };
 
-//TESTING
+
+function showTrailer(){
+
+}
+
+// //TESTING
+// function test(){
+// var anotherUrl = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
+// fetch(anotherUrl).then(function(res){
+//   return res.json();
+// }).then(function (data){
+//   console.log(data)
+// })
+// }
 
 
+//"tt0108709"
+//https://api.watchmode.com//v1/title/563961/details//?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&append_to_response=sources
+//'https://api.watchmode.com/v1/title/'
 
+//https://api.watchmode.com//v1/title/{tt0108709}/details//?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY
 
-
+//  var api_watch = 'https://api.watchmode.com/v1/regions/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value='
+//  url = url + input
+  
+// curl -i 'https://api.watchmode.com/v1/title/559969/details/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&append_to_response=sources'
 
 
 //trying to make the search function work and search certain parameters
