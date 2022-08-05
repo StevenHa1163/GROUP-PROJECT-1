@@ -65,18 +65,29 @@ function showSearch() {
       itemContainer.setAttribute("data-imdbid",itemId);
       const itemTitle = document.createElement("h2");
       const itemDesc = document.createElement("p");
-      const itemID = document.createElement("p");
+      // const itemID = document.createElement("p");
       itemTitle.textContent = element.name;
       itemDesc.textContent = element.type;
       // itemID.textContent = element.imdb_id;
       // itemID.textContent = element.imdb_id;
-      itemContainer.append(itemTitle,itemDesc,itemID);
+      itemContainer.append(itemTitle,itemDesc);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
       console.log(itemContainer.getAttribute("data-imdbid"))
-
+      addTrailer(itemId, itemContainer)
     }
   })
 };
 
 
+function addTrailer(itemId, itemContainer) {
+  var url = "https://api.watchmode.com/v1/title/"+itemId+"/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
+
+  console.log(itemId);
+  console.log(url)
+  fetch(url).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    console.log(data)
+  })
+}
