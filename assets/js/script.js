@@ -105,6 +105,18 @@ function showSearch() {
       // const itemID = document.createElement("p");
       itemTitle.textContent = element.name;
       itemDesc.textContent = element.type;
+
+
+// Monica start
+// Title
+itemTitle.innerHTML = "Title: " + element.name
+// Description
+itemDesc.innerHTML = "Description: " + element.type
+// Trailer
+// link.innerHTML = "Trailer: " + element
+// Monica End
+
+
       // itemID.textContent = element.imdb_id;
       // itemID.textContent = element.imdb_id;
       itemContainer.append(itemTitle,itemDesc);
@@ -139,6 +151,5 @@ function addTrailer(itemId, itemContainer) {
   })
 
 }
-
 
 
