@@ -44,20 +44,20 @@ searchShow.addEventListener("click", showSearch);
 
 //TESTING
 // Retrieve history of searches if present otherwise setting up empty history
-var searches = JSON.parse(localStorage.getItem("searches")) || [];
-console.log(searches);
+// var searches = JSON.parse(localStorage.getItem("searches")) || [];
+// console.log(searches);
 
-searchShow.addEventListener("click", showSearch);
+// searchShow.addEventListener("click", showSearch);
 
-function displayHistory() {
-    $(".searches").empty();
+// function displayHistory() {
+//     $(".searches").empty();
 
-    for (let i = 0; i < searches.length; i++) {
-     console.log(i);
+//     for (let i = 0; i < searches.length; i++) {
+//      console.log(i);
     
-     var button = $("button")
-     button.text(searches[i])
-     $(".searches").append(button);
+//      var button = $("button")
+//      button.text(searches[i])
+//      $(".searches").append(button);
 
 
   // var searchBox = document.querySelector(".input-group");
@@ -67,22 +67,22 @@ function displayHistory() {
   //    btn.addEventListener("click", displayHistory);
   //    form-control.appendChild(btn);
 
-    }  
-}
-displayHistory();
+//     }  
+// }
+// displayHistory();
 
 const DISPLAY_LIMIT = 50;
 function showSearch() {
   var input = show.value
 
-  if (!searches.includes(input)){
-    searches.push(input)
- //    resaving 
-    localStorage.setItem("searches", JSON.stringify(searches));
+//   if (!searches.includes(input)){
+//     searches.push(input)
+//  //    resaving 
+//     localStorage.setItem("searches", JSON.stringify(searches));
  
-    }
+//     }
    
- displayHistory();
+//  displayHistory();
 
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
   // var url_watch = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
