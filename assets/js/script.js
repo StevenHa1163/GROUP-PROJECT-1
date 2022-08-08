@@ -71,7 +71,7 @@ searchShow.addEventListener("click", showSearch);
 // }
 // displayHistory();
 
-const DISPLAY_LIMIT = 50;
+const DISPLAY_LIMIT = 10;
 function showSearch() {
   var input = show.value
 
@@ -128,9 +128,9 @@ itemDesc.innerHTML = "Description: " + element.type
   })
 };
 
-
+//k_72kh8az4
 function addTrailer(itemId, itemContainer) {
-  //var url = "https://api.watchmode.com/v1/title/"+itemId+"/details/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDYWon&append_to_response=sources"
+  // var url = "https://api.watchmode.com/v1/title/"+itemId+"/details/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDYWon&append_to_response=sources"
   var url = "https://imdb-api.com/en/API/Trailer/k_5amc983n/"+itemId+""
   // console.log(itemId);
   // console.log(url)
@@ -138,7 +138,7 @@ function addTrailer(itemId, itemContainer) {
     return res.json();
   }).then(function (data) {
     console.log(data)
-    const element = data.trailer;
+    const element = data.linkEmbed;
     console.log(element);
     const a = document.createElement('a');
     const link = document.createTextNode(element);
@@ -151,5 +151,3 @@ function addTrailer(itemId, itemContainer) {
   })
 
 }
-
-
