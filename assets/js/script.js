@@ -43,10 +43,47 @@ searchShow.addEventListener("click", showSearch);
 
 
 //TESTING
+// Retrieve history of searches if present otherwise setting up empty history
+// var searches = JSON.parse(localStorage.getItem("searches")) || [];
+// console.log(searches);
 
-const DISPLAY_LIMIT = 3;
+// searchShow.addEventListener("click", showSearch);
+
+// function displayHistory() {
+//     $(".searches").empty();
+
+//     for (let i = 0; i < searches.length; i++) {
+//      console.log(i);
+    
+//      var button = $("button")
+//      button.text(searches[i])
+//      $(".searches").append(button);
+
+
+  // var searchBox = document.querySelector(".input-group");
+  // searchBox.innerHTML = ('');
+  //    var btn = document.createElement("button")
+  //    btn.innerText = searches[i]
+  //    btn.addEventListener("click", displayHistory);
+  //    form-control.appendChild(btn);
+
+//     }  
+// }
+// displayHistory();
+
+const DISPLAY_LIMIT = 50;
 function showSearch() {
   var input = show.value
+
+//   if (!searches.includes(input)){
+//     searches.push(input)
+//  //    resaving 
+//     localStorage.setItem("searches", JSON.stringify(searches));
+ 
+//     }
+   
+//  displayHistory();
+
   // var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
   // var url_watch = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
   // var url = `https://imdb-api.com/en/API/SearchSeries/k_72kh8az4`
@@ -65,18 +102,54 @@ function showSearch() {
       itemContainer.setAttribute("data-imdbid",itemId);
       const itemTitle = document.createElement("h2");
       const itemDesc = document.createElement("p");
-      const itemID = document.createElement("p");
+      // const itemID = document.createElement("p");
       itemTitle.textContent = element.name;
       itemDesc.textContent = element.type;
+
+
+// Monica start
+// Title
+itemTitle.innerHTML = "Title: " + element.name
+// Description
+itemDesc.innerHTML = "Description: " + element.type
+// Trailer
+// link.innerHTML = "Trailer: " + element
+// Monica End
+
+
       // itemID.textContent = element.imdb_id;
       // itemID.textContent = element.imdb_id;
-      itemContainer.append(itemTitle,itemDesc,itemID);
+      itemContainer.append(itemTitle,itemDesc);
       resultsContainer.append(itemContainer);
       console.log(resultsContainer);
       console.log(itemContainer.getAttribute("data-imdbid"))
-
+      addTrailer(itemId, itemContainer)
     }
   })
 };
+
+
+function addTrailer(itemId, itemContainer) {
+  var url = "https://api.watchmode.com/v1/title/"+itemId+"/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources"
+  // var url = "https://imdb-api.com/en/API/Trailer/k_72kh8az4/"+itemId+""
+  // console.log(itemId);
+  // console.log(url)
+  fetch(url).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    console.log(data)
+    const element = data.trailer;
+    console.log(element);
+    const a = document.createElement('a');
+    const link = document.createTextNode(element);
+    a.appendChild(link);
+    a.href = "element";
+    // a.title = "trailer";
+    // itemTrailer.textContent = element;
+    itemContainer.append(a);
+    console.log(itemContainer);
+  })
+
+}
 
 
