@@ -71,7 +71,7 @@ searchShow.addEventListener("click", showSearch);
 // }
 // displayHistory();
 
-const DISPLAY_LIMIT = 10;
+const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value
 
@@ -141,9 +141,9 @@ function addTrailer(itemId, itemContainer) {
     const element = data.linkEmbed;
     console.log(element);
     const a = document.createElement('a');
-    const link = document.createTextNode(element);
+    const link = document.createTextNode("trailer");
     a.appendChild(link);
-    a.href = "element";
+    a.href = element;
     // a.title = "trailer";
     // itemTrailer.textContent = element;
     itemContainer.append(a);
