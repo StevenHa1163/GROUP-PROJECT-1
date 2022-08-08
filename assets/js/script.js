@@ -11,37 +11,6 @@ searchShow.addEventListener("click", showSearch);
 // search function
 
 
-
-// full title rank
-// const DISPLAY_LIMIT = 5;
-// function showSearch() {
-//   var input = show.value
-//   var url = `https://imdb-api.com/en/API/MostPopularTVs/k_72kh8az4`
-//   // var url = 'https://api.watchmode.com/v1/title/345534/details/?apiKey=ci6ux2nzkeIC5BKgFcV6wO4d23T401iYpZuy7Won&append_to_response=sources'
-//   // var url = `https://imdb-api.com/en/API/SearchSeries/k_72kh8az4`
-//   // var url = `http://api.openweathermap.org/go/1.0/direct?q=$e{input}&limit=1&appid=ac75e314d25573644ae4d9a903da5c8c`
-//   fetch(url).then(function (res) {
-//     return res.json();
-//   }).then(function (data) {
-//     console.log(data)
-//     var resultsContainer = document.querySelector("#results");
-//     for (let index = 0; index < DISPLAY_LIMIT; index++) {
-//       const element = data.items[index];
-//       const itemContainer = document.createElement("div");
-//       const itemTitle = document.createElement("h2");
-//       const itemRank = document.createElement("p");
-//       itemTitle.textContent = element.fullTitle;
-//       itemRank.textContent = element.rank;
-//       itemContainer.append(itemTitle,itemRank);
-//       resultsContainer.append(itemContainer);
-//       console.log(resultsContainer);
-
-//     }
-//   })
-// };
-
-
-
 //TESTING
 // Retrieve history of searches if present otherwise setting up empty history
 // var searches = JSON.parse(localStorage.getItem("searches")) || [];
