@@ -10,58 +10,58 @@ searchShow.addEventListener("click", showSearch);
 
 var recentSearches = [];
 
-function renderSearches() {
+// function renderSearches() {
 
-  searches.innerHTML = "";
+//   searches.innerHTML = "";
 
-  for (var i = 0; i < recentSearches.length; i++) {
-var recentSearches = recentSearches[i];
+//   for (var i = 0; i < recentSearches.length; i++) {
+// var recentSearches = recentSearches[i];
 
-    var li = document.createElement("li");
-    li.textContent = recentSearches
+//     var li = document.createElement("li");
+//     li.textContent = recentSearches
 
-    var button = document.createElement("button");
-    button.textContent = "complete";
+//     var button = document.createElement("button");
+//     button.textContent = "complete";
 
-    li.appendChild(button);
-    recentSearches.appendChild(li);
-}
-}
+//     li.appendChild(button);
+//     recentSearches.appendChild(li);
+// }
+// }
 // Retrieve history of searches if present otherwise setting up empty history
-function init () {
+// function init () {
 
-var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
+// var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
 
-if (storedSearches !== null) {
-  recentSearches = storedSearches;
-}
-
-
-//renders searches
-  renderSearches();
-}
-
-function storeRecents () {
-  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-}
-
-recentSearches.addEventListener("click", function(event) {
-  event.preventDefault();
-
-  var recentSearchesText = recentSearchesInput.value.trim();
-  
-  if (recentSearchesText === "") {
-    return;
-}
-
-recentSearches.push(recentSearchesText);
-recentSearches.value = "";
+// if (storedSearches !== null) {
+//   recentSearches = storedSearches;
+// }
 
 
-//stores and displays searches
-storeRecents();
-renderSearches();
-});
+// //renders searches
+//   renderSearches();
+// }
+
+// function storeRecents () {
+//   localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+// }
+
+// recentSearches.addEventListener("click", function(event) {
+//   event.preventDefault();
+
+//   var recentSearchesText = recentSearchesInput.value.trim();
+
+//   if (recentSearchesText === "") {
+//     return;
+// }
+
+// recentSearches.push(recentSearchesText);
+// recentSearches.value = "";
+
+
+// //stores and displays searches
+// storeRecents();
+// renderSearches();
+// });
 // console.log(searches);
 
 // searchShow.addEventListener("click", showSearch);
@@ -104,7 +104,7 @@ function showSearch() {
   //     }
 
 
-//watchmode API
+  //watchmode API
   var url =
     "https://api.watchmode.com/v1/search/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value=";
   url = url + input;
@@ -135,7 +135,11 @@ function showSearch() {
         console.log(resultsContainer);
         console.log(itemContainer.getAttribute("data-imdbid"));
         addTrailer(itemId, itemContainer);
+
+        recentSearches.append();
+
       }
+  storeRecents();
     });
 }
 
@@ -158,6 +162,60 @@ function addTrailer(itemId, itemContainer) {
       console.log(itemContainer);
     });
 }
-      // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
-      // const savedSearches = JSON.parse(localStorage.getItem('searches'));
-      // document.getElementById('savedSearches').textContent = searches;
+// localStorage.setItem("searches", JSON.stringify({movietitle : input}));
+// const savedSearches = JSON.parse(localStorage.getItem('searches'));
+// document.getElementById('savedSearches').textContent = searches;
+
+
+function renderSearches() {
+
+  // recentSearches.innerHTML = "";
+
+  for (var i = 0; i < recentSearches.length; i++) {
+    var recentSearch = recentSearches[i];
+
+    var li = document.createElement("li");
+    li.textContent = recentSearch
+
+    var button = document.createElement("button");
+    button.textContent = "complete";
+
+    li.appendChild(button);
+    recentSearch.appendChild(li);
+  }
+}
+
+
+function init() {
+
+  var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
+
+  if (storedSearches !== null) {
+    recentSearches = storedSearches;
+  }
+
+
+  //renders searches
+  renderSearches();
+}
+
+function storeRecents() {
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+// recentSearches.addEventListener("click", function(event) {
+//   event.preventDefault();
+
+//   var recentSearchesText = recentSearchesInput.value.trim();
+
+//   if (recentSearchesText === "") {
+
+//   }
+
+// recentSearches.push(recentSearchesText);
+// recentSearches.value = "";
+
+
+// //stores and displays searches
+storeRecents();
+renderSearches();
