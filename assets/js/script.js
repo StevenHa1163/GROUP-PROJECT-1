@@ -8,8 +8,10 @@ var searchesList = document.querySelector("#searchesList");
 searchShow.addEventListener("click", showSearch);
 // search function
 
-var recentSearches = [];
+// var recentSearches = [];
 
+var searches = JSON.parse(localStorage.getItem("searches")) || [];
+console.log(searches);
 // function renderSearches() {
 
 //   searches.innerHTML = "";
@@ -66,26 +68,26 @@ var recentSearches = [];
 
 // searchShow.addEventListener("click", showSearch);
 
-// function displayHistory() {
-//   $(".searches").empty();
+function displayHistory() {
+  $(".searches").empty();
 
-//   for (let i = 0; i < searches.length; i++) {
-//     console.log(i);
+  for (let i = 0; i < searches.length; i++) {
+    console.log(i);
 
-//     var button = $("button");
-//     button.text(searches[i]);
-//     $(".searches").append(button);
+    var button = $("button");
+    button.text(searches[i]);
+    $(".searches").append(button);
 
-//     var searchBox = document.querySelector(".input-group");
-//     searchBox.innerHTML = "";
-//     var btn = document.createElement("button");
-//     btn.innerText = searches[i];
-//     btn.addEventListener("click", displayHistory);
-//     form - control.appendChild(btn);
-//     console.log(btn);
-//   }
-//   displayHistory();
-// }
+    var searchBox = document.querySelector(".input-group");
+    searchBox.innerHTML = "";
+    var btn = document.createElement("button");
+    btn.innerText = searches[i];
+    btn.addEventListener("click", displayHistory);
+    form - control.appendChild(btn);
+    console.log(btn);
+  }
+  displayHistory();
+}
 // displayHistory();
 
 
@@ -103,6 +105,11 @@ function showSearch() {
 
   //     }
 
+  if (!searches.includes(input)) {
+    searches.push(input);
+    //    resaving
+    localStorage.setItem("searches", JSON.stringify(searches));
+  }
 
   //watchmode API
   var url =
@@ -136,10 +143,10 @@ function showSearch() {
         console.log(itemContainer.getAttribute("data-imdbid"));
         addTrailer(itemId, itemContainer);
 
-        recentSearches.append();
+        // recentSearches.append();
 
       }
-  storeRecents();
+  // storeRecents();
     });
 }
 
@@ -167,55 +174,55 @@ function addTrailer(itemId, itemContainer) {
 // document.getElementById('savedSearches').textContent = searches;
 
 
-function renderSearches() {
+// function renderSearches() {
 
-  // recentSearches.innerHTML = "";
+//   // recentSearches.innerHTML = "";
 
-  for (var i = 0; i < recentSearches.length; i++) {
-    var recentSearch = recentSearches[i];
+//   for (var i = 0; i < recentSearches.length; i++) {
+//     var recentSearch = recentSearches[i];
 
-    var li = document.createElement("li");
-    li.textContent = recentSearch
+//     var li = document.createElement("li");
+//     li.textContent = recentSearch
 
-    var button = document.createElement("button");
-    button.textContent = "complete";
+//     var button = document.createElement("button");
+//     button.textContent = "complete";
 
-    li.appendChild(button);
-    recentSearch.appendChild(li);
-  }
-}
-
-
-function init() {
-
-  var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
-
-  if (storedSearches !== null) {
-    recentSearches = storedSearches;
-  }
+//     li.appendChild(button);
+//     recentSearch.appendChild(li);
+//   }
+// }
 
 
-  //renders searches
-  renderSearches();
-}
+// function init() {
 
-function storeRecents() {
-  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
-}
+//   var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
 
-// recentSearches.addEventListener("click", function(event) {
-//   event.preventDefault();
-
-//   var recentSearchesText = recentSearchesInput.value.trim();
-
-//   if (recentSearchesText === "") {
-
+//   if (storedSearches !== null) {
+//     recentSearches = storedSearches;
 //   }
 
-// recentSearches.push(recentSearchesText);
-// recentSearches.value = "";
+
+//   //renders searches
+//   renderSearches();
+// }
+
+// function storeRecents() {
+//   localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+// }
+
+// // recentSearches.addEventListener("click", function(event) {
+// //   event.preventDefault();
+
+// //   var recentSearchesText = recentSearchesInput.value.trim();
+
+// //   if (recentSearchesText === "") {
+
+// //   }
+
+// // recentSearches.push(recentSearchesText);
+// // recentSearches.value = "";
 
 
-// //stores and displays searches
-storeRecents();
-renderSearches();
+// // //stores and displays searches
+// storeRecents();
+// renderSearches();
