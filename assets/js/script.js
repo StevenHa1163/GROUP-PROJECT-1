@@ -1,50 +1,100 @@
 // variable list
 var searchShow = document.querySelector("#searchBtn");
 var show = document.querySelector("#enterShow");
+var searchesList = document.querySelector("#searchesList");
+
 
 // click event
 searchShow.addEventListener("click", showSearch);
 // search function
 
+var recentSearches = [];
+
+function renderSearches() {
+
+  searches.innerHTML = "";
+
+  for (var i = 0; i < recentSearches.length; i++) {
+var recentSearches = recentSearches[i];
+
+    var li = document.createElement("li");
+    li.textContent = recentSearches
+
+    var button = document.createElement("button");
+    button.textContent = "complete";
+
+    li.appendChild(button);
+    recentSearches.appendChild(li);
+}
+}
 //TESTINGING
 // Retrieve history of searches if present otherwise setting up empty history
-var searches = JSON.parse(localStorage.getItem("searches")) || [];
-console.log(searches);
+function init () {
 
-searchShow.addEventListener("click", showSearch);
+var storedSearches = JSON.parse(localStorage.getItem("recentSearches"));
 
-function displayHistory() {
-  $(".searches").empty();
-
-  for (let i = 0; i < searches.length; i++) {
-    console.log(i);
-
-    var button = $("button");
-    button.text(searches[i]);
-    $(".searches").append(button);
-
-    var searchBox = document.querySelector(".input-group");
-    searchBox.innerHTML = "";
-    var btn = document.createElement("button");
-    btn.innerText = searches[i];
-    btn.addEventListener("click", displayHistory);
-    form - control.appendChild(btn);
-    console.log(btn);
-  }
-  displayHistory();
+if (storedSearches !== null) {
+  recentSearches = storedSearches;
 }
+
+  renderSearches();
+}
+
+function storeRecents () {
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+recentSearches.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var recentSearchesText = recentSearchesInput.value.trim();
+  
+  if (recentSearchesText === "") {
+    return;
+}
+
+recentSearches.push(recentSearchesText);
+recentSearches.value = "";
+
+storeRecents();
+renderSearches();
+});
+// console.log(searches);
+
+// searchShow.addEventListener("click", showSearch);
+
+// function displayHistory() {
+//   $(".searches").empty();
+
+//   for (let i = 0; i < searches.length; i++) {
+//     console.log(i);
+
+//     var button = $("button");
+//     button.text(searches[i]);
+//     $(".searches").append(button);
+
+//     var searchBox = document.querySelector(".input-group");
+//     searchBox.innerHTML = "";
+//     var btn = document.createElement("button");
+//     btn.innerText = searches[i];
+//     btn.addEventListener("click", displayHistory);
+//     form - control.appendChild(btn);
+//     console.log(btn);
+//   }
+//   displayHistory();
+// }
 // displayHistory();
 
 const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value;
 
-    if (!searches.includes(input)){
-      searches.push(input)
-   //    resaving
-      localStorage.setItem("searches", JSON.stringify(searches));
+  //   if (!storedSearches.includes(input)){
+  //     storedSearches.push(input)
+  //  //    resaving
+  //     localStorage.setItem("recentSearches", JSON.stringify(storedSearches));
 
-      }
+  //     }
 
 
 
