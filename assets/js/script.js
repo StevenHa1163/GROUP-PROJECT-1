@@ -6,7 +6,7 @@ var show = document.querySelector("#enterShow");
 searchShow.addEventListener("click", showSearch);
 // search function
 
-//TESTING
+//TESTINGING
 // Retrieve history of searches if present otherwise setting up empty history
 var searches = JSON.parse(localStorage.getItem("searches")) || [];
 console.log(searches);
