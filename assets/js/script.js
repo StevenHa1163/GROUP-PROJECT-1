@@ -8,44 +8,43 @@ searchShow.addEventListener("click", showSearch);
 
 //TESTING
 // Retrieve history of searches if present otherwise setting up empty history
-// var searches = JSON.parse(localStorage.getItem("searches")) || [];
-// console.log(searches);
+var searches = JSON.parse(localStorage.getItem("searches")) || [];
+console.log(searches);
 
-// searchShow.addEventListener("click", showSearch);
+searchShow.addEventListener("click", showSearch);
 
-// function displayHistory() {
-//     $(".searches").empty();
+function displayHistory() {
+    $(".searches").empty();
 
-//     for (let i = 0; i < searches.length; i++) {
-//      console.log(i);
+    for (let i = 0; i < searches.length; i++) {
+     console.log(i);
 
-//      var button = $("button")
-//      button.text(searches[i])
-//      $(".searches").append(button);
+     var button = $("button")
+     button.text(searches[i])
+     $(".searches").append(button);
 
-// var searchBox = document.querySelector(".input-group");
-// searchBox.innerHTML = ('');
-//    var btn = document.createElement("button")
-//    btn.innerText = searches[i]
-//    btn.addEventListener("click", displayHistory);
-//    form-control.appendChild(btn);
+var searchBox = document.querySelector(".input-group");
+searchBox.innerHTML = ('');
+   var btn = document.createElement("button")
+   btn.innerText = searches[i]
+   btn.addEventListener("click", displayHistory);
+   form-control.appendChild(btn);
 
-//     }
-// }
-// displayHistory();
+    }
+ }
 
 const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value;
 
-  //   if (!searches.includes(input)){
-  //     searches.push(input)
-  //  //    resaving
-  //     localStorage.setItem("searches", JSON.stringify(searches));
+    if (!searches.includes(input)){
+      searches.push(input)
+   //    resaving
+      localStorage.setItem("searches", JSON.stringify(searches));
 
-  //     }
+      }
 
-  //  displayHistory();
+
 
   var url =
     "https://api.watchmode.com/v1/search/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value=";
@@ -103,3 +102,6 @@ function addTrailer(itemId, itemContainer) {
       console.log(itemContainer);
     });
 }
+      // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
+      // const savedSearches = JSON.parse(localStorage.getItem('searches'));
+      // document.getElementById('savedSearches').textContent = searches;
