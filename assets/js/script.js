@@ -57,6 +57,8 @@ recentSearches.addEventListener("click", function(event) {
 recentSearches.push(recentSearchesText);
 recentSearches.value = "";
 
+
+//stores and displays searches
 storeRecents();
 renderSearches();
 });
