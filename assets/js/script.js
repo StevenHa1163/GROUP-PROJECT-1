@@ -27,7 +27,6 @@ var recentSearches = recentSearches[i];
     recentSearches.appendChild(li);
 }
 }
-//TESTINGING
 // Retrieve history of searches if present otherwise setting up empty history
 function init () {
 
@@ -85,7 +84,11 @@ renderSearches();
 // }
 // displayHistory();
 
+
+//limits displays
 const DISPLAY_LIMIT = 3;
+
+// displays the searches 
 function showSearch() {
   var input = show.value;
 
