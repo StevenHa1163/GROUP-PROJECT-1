@@ -6,12 +6,12 @@ var show = document.querySelector("#enterShow");
 searchShow.addEventListener("click", showSearch);
 // search function
 
-//TESTING
+//TESTINGING
 // Retrieve history of searches if present otherwise setting up empty history
 var searches = JSON.parse(localStorage.getItem("searches")) || [];
 console.log(searches);
 
-// searchShow.addEventListener("click", showSearch);
+searchShow.addEventListener("click", showSearch);
 
 function displayHistory() {
   $(".searches").empty();
@@ -38,14 +38,15 @@ function displayHistory() {
 const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value;
-  // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
-  // const savedSearches = JSON.parse(localStorage.getItem('searches',m));
-  if (!searches.includes(input)) {
-    searches.push(input);
-    //    resaving
-    localStorage.setItem("searches", JSON.stringify(searches));
-  }
-  //  displayHistory();
+
+    if (!searches.includes(input)){
+      searches.push(input)
+   //    resaving
+      localStorage.setItem("searches", JSON.stringify(searches));
+
+      }
+
+
 
   var url =
     "https://api.watchmode.com/v1/search/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value=";
@@ -100,3 +101,6 @@ function addTrailer(itemId, itemContainer) {
       console.log(itemContainer);
     });
 }
+      // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
+      // const savedSearches = JSON.parse(localStorage.getItem('searches'));
+      // document.getElementById('savedSearches').textContent = searches;
