@@ -14,6 +14,7 @@ console.log(searches);
 searchShow.addEventListener("click", showSearch);
 
 function displayHistory() {
+<<<<<<< HEAD
     $(".searches").empty();
 
     for (let i = 0; i < searches.length; i++) {
@@ -32,10 +33,33 @@ searchBox.innerHTML = ('');
 
     }
  }
+=======
+  $(".searches").empty();
+
+  for (let i = 0; i < searches.length; i++) {
+    console.log(i);
+
+    var button = $("button");
+    button.text(searches[i]);
+    $(".searches").append(button);
+
+    var searchBox = document.querySelector(".input-group");
+    searchBox.innerHTML = "";
+    var btn = document.createElement("button");
+    btn.innerText = searches[i];
+    btn.addEventListener("click", displayHistory);
+    form - control.appendChild(btn);
+    console.log(btn);
+  }
+  displayHistory();
+}
+// displayHistory();
+>>>>>>> bb404377dd1cd00cc1dc559174226ecd1b897c63
 
 const DISPLAY_LIMIT = 3;
 function showSearch() {
   var input = show.value;
+<<<<<<< HEAD
 
     if (!searches.includes(input)){
       searches.push(input)
@@ -45,6 +69,16 @@ function showSearch() {
       }
 
 
+=======
+  // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
+  // const savedSearches = JSON.parse(localStorage.getItem('searches',m));
+  if (!searches.includes(input)) {
+    searches.push(input);
+    //    resaving
+    localStorage.setItem("searches", JSON.stringify(searches));
+  }
+  //  displayHistory();
+>>>>>>> bb404377dd1cd00cc1dc559174226ecd1b897c63
 
   var url =
     "https://api.watchmode.com/v1/search/?apiKey=BjJ1HfK8A6JaMjMk0UCbaDWrNACDpoIyzqqZEVDY&search_field=name&search_value=";
@@ -54,7 +88,6 @@ function showSearch() {
       return res.json();
     })
     .then(function (data) {
-      console.log(data);
       var resultsContainer = document.querySelector("#results");
       for (let index = 0; index < DISPLAY_LIMIT; index++) {
         const element = data.title_results[index];
@@ -67,12 +100,10 @@ function showSearch() {
         itemTitle.textContent = element.name;
         itemDesc.textContent = element.type;
 
-        // Monica start
         // Title
         itemTitle.innerHTML = "Title: " + element.name;
         // Description
         itemDesc.innerHTML = "Description: " + element.type;
-        // Monica End
 
         itemContainer.append(itemTitle, itemDesc);
         resultsContainer.append(itemContainer);
@@ -102,6 +133,10 @@ function addTrailer(itemId, itemContainer) {
       console.log(itemContainer);
     });
 }
+<<<<<<< HEAD
       // localStorage.setItem("searches", JSON.stringify({movietitle : input}));
       // const savedSearches = JSON.parse(localStorage.getItem('searches'));
       // document.getElementById('savedSearches').textContent = searches;
+=======
+
+>>>>>>> bb404377dd1cd00cc1dc559174226ecd1b897c63
